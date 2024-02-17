@@ -3,11 +3,11 @@
 
 {% block content %}
 <div class="container  shadow p-3 mb-5 rounded">
-    <a href="{% url 'AdminSide:order-list'%}"><button type="button" class="btn-secondary"> << back </button></a>
+    <a href="{% url 'AdminSide:all-messages'%}"><button type="button" class="btn-secondary"> << back </button></a>
       <div class="nav navbar border">
           <div class="row">
-              <div class="title"><h5><small>Client name: </small>{{ order.reciever_name}}</h5></div>
-              <div class="timestamp">created on: {{order.date_added}}</div>
+              <div class="title"><h5><small>Client name: </small>{{ message.sender_name}}</h5></div>
+              
           </div>
       </div>
       <div class="sender">
@@ -22,65 +22,13 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>{{order.sender_name}}</td>
-                  <td>{{order.sender_email}}</td>
-                  <td>{{order.sender_address}}</td>
+                  <td>{{message.sender_name}}</td>
+                  <td>{{message.sender_email}}</td>
+                  <td>{{message.sender_address}}</td>
                 </tr>
               </tbody>
             </table>
       </div>
-      <div class="container-fluid reciever">
-          <h5 class="text-center">Reciever's information</h5>
-          <table class="table">
-              <tbody>
-                <tr>
-                  <td class="text-strong">Name</td>
-                  <td>{{order.reciever_name}}</td>
-                </tr>
-                <tr>
-                  <td class="text-strong">Phone</td>
-                  <td>{{order.Phone_number}}</td>
-                </tr>
-                <tr>
-                  <td class="text-strong">Address</td>
-                  <td>{{order.reciever_address}}</td>
-                </tr>
-                <tr>
-                  <td class="text-strong">Email</td>
-                  <td>{{order.reciever_email}}</td>
-                </tr>
-                <tr>
-                  <td class="text-strong">Package description</td>
-                  <td>{{order.description}}</td>
-                </tr>
-                <tr>
-                  <td class="text-strong">Weight</td>
-                  <td>{{order.weight}}</td>
-                </tr>
-                <tr>
-                  <td class="text-strong">departure date</td>
-                  <td>{{order.departure_time}}</td>
-                </tr>
-                <tr>
-                  <td class="text-strong">Arrival date</td>
-                  <td>{{order.arrival_time}}</td>
-                </tr>
-                <tr>
-                  <td class="text-strong">Payment method</td>
-                  <td>{{order.payment_method}}</td>
-                </tr>
-                <tr>
-                  <td class="text-strong">status</td>
-                  <td>{{order.status}}</td>
-                </tr>
-                <tr>
-                  <td class="text-strong">Tracking number</td>
-                  <td>{{order.tracking_number}}</td>
-                </tr>
-              </tbody>
-            </table>
-      </div>
-      <a href="{% url 'AdminSide:update-order' order.id %}"><button type="reset">Update</button></a>
       <a href="{% url 'AdminSide:delete-order' order.id %}"><button type="reset">Delete</button></a>
   </div>
 

@@ -10,8 +10,8 @@ import uuid
 ORDERSTATUS = ((1, "Processed"), (2, "Dispatch"), (3, "En Route "), (4, "Delivered"))
 
 class user (models.Model):
-    username = models.TextField(max_length=10)
-    password = models.TextField(max_length=10)
+    username = models.CharField(max_length=10)
+    password = models.CharField(max_length=10)
     
     def __str__(self):
         return self.username

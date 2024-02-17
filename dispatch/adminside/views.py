@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate,logout
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
-from .forms import Orderform
+from .forms import Orderform, Userform
 from . models import Order
+from clientside.forms import Contactform
+from clientside.models import Message
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required
 def Dashboard(request):
     count =Order.objects.count()
     return render(request, 'index.html', {'count':count} )
@@ -72,11 +76,12 @@ def deleteorder(request, pk):
     context = {'order': order}
     return render(request, 'delete.html', context)
 
+  
 def Allmessages(request):
-    # contactmessage = contactmessage.objects.all()
-    return render(request, 'allmessage.html', {'contactmessage': contactmessage})
+    messages = Message.objects.all()
+    return render(request, 'allmessages.html', {'messages': messages})
 
 def messageDetails(request, pk):
-    order = Order.objects.get(id=pk)
-    return render(request, 'messageDetail.html', {'order': order})
+    message = Message.objects.get(id=pk)
+    return render(request, 'messageDetail.html', {'message':message})
 
