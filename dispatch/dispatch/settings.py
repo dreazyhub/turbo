@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,6 +83,7 @@ DATABASES = {
     }
 }
 
+DATABASES['default'] = dj_database_url.parse("postgres://rapid_dispatch_user:MecaHz7N818QHtSbPMSzUSznvWH5nGH8@dpg-cn9b8qq1hbls73df8on0-a.oregon-postgres.render.com/rapid_dispatch")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
