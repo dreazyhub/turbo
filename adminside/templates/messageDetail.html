@@ -1,0 +1,35 @@
+{% extends 'base.html '%}
+{% load static %}
+
+{% block content %}
+<div class="container  shadow p-3 mb-5 rounded">
+    <a href="{% url 'AdminSide:all-messages'%}"><button type="button" class="btn-secondary"> << back </button></a>
+      <div class="nav navbar border">
+          <div class="row">
+              <div class="title"><h5><small>Client name: </small>{{ message.sender_name}}</h5></div>
+              
+          </div>
+      </div>
+      <div class="sender">
+          <h5 class="text-center">sender's information</h5>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">email</th>
+                  <th scope="col">address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{message.sender_name}}</td>
+                  <td>{{message.sender_email}}</td>
+                  <td>{{message.sender_address}}</td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+      <a href="{% url 'AdminSide:delete-order' order.id %}"><button type="reset">Delete</button></a>
+  </div>
+
+{% endblock %}

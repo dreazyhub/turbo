@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+      <table class="table table-bordered border-primary">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Client name</th>
+            <th scope="col">description</th>
+            <th scope="col">status</th>
+            <th scope="col">action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for order in orders %}
+          <tr>
+            <th >{{forloop.counter}}</th>
+            <td>{{order.reciever_name}}</td>
+            <td>{{order.description|truncatechars:20}} ...</td>
+            <td>{{order.status}}</td>
+            <td>
+              <a href="{% url 'AdminSide:details' order.id %}"><i class="fa-solid fa-eye"></i>view</a>
+              <a href="{% url 'AdminSide:update-order' order.id %}">Edit</a>
+              <a href="{% url 'AdminSide:delete-order' order.id %}"><i class="fas fa-trash-alt"></i>delete</a>     
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
+
+{% endblock %}

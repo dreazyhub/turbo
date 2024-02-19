@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form action="" method="POST">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{order.reciever_name}}'s order"?</p>
+    <a href="{% url 'AdminSide:order-list' %}"><button>back</button></a>
+    <input type="submit" name="" value="confirm">
+</form>
+{% endblock %}
