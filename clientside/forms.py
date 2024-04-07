@@ -1,13 +1,12 @@
 from django.forms import ModelForm
-from .models import Client, Quote, Message
-
-
-class Contactform(ModelForm):
-    class Meta:
-        model = Message
-        fields = '__all__'
+from .models import Quote
         
 class Messageform(ModelForm):
+    class Meta:
+        model = Quote
+        fields = '__all__'
+        
+class QuoteForm(ModelForm):
     class Meta:
         model = Quote
         fields = '__all__'

@@ -1,0 +1,21 @@
+
+{% extends 'email_base.html' %}
+{% block content %}
+
+
+<div class="pt-4 pb-2">
+    <h5 class="card-title text-center pb-0 fs-4">Order status updated</h5>
+  </div>
+  <p>Hello, {{reciever_name}} </p>
+  <p>We are pleased to inform you that that your Order has bean successfully created. It is now {{order.status}}</p>
+  <h4>Order information </h4>
+  <ul>
+      <li>Tracking number: {{ order.tracking_number }}</li>
+      <li>latest Freight scan: Order status Updated</li>
+  </ul>   
+</div>
+<div class="col-12">
+  <p class="small mb-0">We hope this meets with your approval. Please do not hesitate to get in touch with us for further assistance, <br>Rapiddispatch Team</p>
+</div>
+
+{% endblock %}

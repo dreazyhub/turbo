@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from adminside.models import Order
 from django.contrib import messages
 from .models import Client
-from . forms import Contactform
+from . forms import QuoteForm
 
 # Create your views here.
 
@@ -28,9 +28,9 @@ def Track(request):
 
 
 def Contact(request):
-    form = Contactform()
+    form = QuoteForm()
     if request.method =='POST':
-        form = Contactform(request.POST)
+        form = QuoteForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('ClientSide:contact')
@@ -50,5 +50,12 @@ def deleteorder(request, pk):
     return render(request, 'delete.html', context)
 
 def Quote(request):
+    form = QuoteForm()
+    if request.method =='POST':
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('ClientSide:get-a-quote')
+    context = {'form':form }
     return render(request, 'get-a-quote.html')
 

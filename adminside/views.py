@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
+from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from .forms import Orderform, Userform
 from . models import Order
-from clientside.forms import Contactform
-from clientside.models import Message
+from clientside.models import Quote
 from django.contrib.auth.decorators import login_required
+
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -39,7 +42,7 @@ def loginUser(request):
 
 
 def NewOrder(request):
-    form = Orderform()
+    form = Orderform()  
     if request.method =='POST':
         form = Orderform(request.POST)
         if form.is_valid():
@@ -51,13 +54,36 @@ def NewOrder(request):
 def updateOrder(request, pk):
     order = Order.objects.get(id=pk)
     form = Orderform(instance=order)
-    if request.method =='POST':
+    
+    if request.method == 'POST':
         form = Orderform(request.POST, instance=order)
+        
         if form.is_valid():
             form.save()
+
+            # Determine the status of the order
+            status = order.status  
+
+            # Select email template based on status
+            if status in ['Processed', 'Dispatch', 'En Route', 'Delivered']:
+                email_template = 'email_template.html'  # Change this to the appropriate email template for each status
+
+                # Render email template with order details
+                email_context = {'order': order}
+                email_content = render_to_string(email_template, email_context)
+
+                # Send HTML email
+                email_subject = 'Order status updated'
+                sender_email = 'Tzuarg@gmail.com'  # Update with your email
+                recipient_email = order.email  # Assuming 'email' is a field in your Order model
+                email = EmailMessage(email_subject, email_content, sender_email, [recipient_email])
+                email.content_subtype = 'html'
+                email.send()
+
             return redirect('AdminSide:order-list')
-    context = {'form':form}
-    return render(request, 'newOrder.html',context )
+    
+    context = {'form': form}
+    return render(request, 'newOrder.html', context)
 
 
 def OrderList(request):
@@ -78,10 +104,21 @@ def deleteorder(request, pk):
 
   
 def Allmessages(request):
-    messages = Message.objects.all()
+    messages = Quote.objects.all()
     return render(request, 'allmessages.html', {'messages': messages})
 
 def messageDetails(request, pk):
-    message = Message.objects.get(id=pk)
-    return render(request, 'messageDetail.html', {'message':message})
+    messages = Quote.objects.get(id=pk)
+    return render(request, 'messageDetail.html', {'messages':messages})
 
+def deletemessage(request, pk):
+    message = Quote.objects.get(id=pk)
+    if request.method =='POST':
+        message.delete()
+        return redirect('AdminSide:allmessages')
+    context = {'message': message}
+    return render(request, 'delete.html', context)
+
+
+def status(request):
+    return render(request, 'email_template.html')

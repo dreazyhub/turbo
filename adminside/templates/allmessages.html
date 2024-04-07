@@ -18,15 +18,15 @@
           </tr>
         </thead>
         <tbody>
-          {% for message in messages %}
+          {% for messages in messages %}
           <tr>
-            <th >{{forloop.counter}}</th>
-            <td>{{message.sender_name}}</td>
-            <td>{{message.email|truncatechars:20}} ...</td>
-            <td>{{message.subject| truncatechars:10}}</td>
+            <td>{{forloop.counter}}</td>
+            <td>{{messages.name}}</td>
+            <td>{{messages.email|truncatechars:20}} ...</td>
+            <td>{{messages.subject| truncatechars:10}}</td>
             <td>
-              <a href="{% url 'AdminSide:message-details' %}"><i class="fa-solid fa-eye"></i>view</a>
-              <a href="">Edit</a>
+              <a href="{% url 'AdminSide:message-details' messages.id %}"><i class="fa-solid fa-eye"></i>view</a>
+
               <a href=""><i class="fas fa-trash-alt"></i>delete</a>     
             </td>
           </tr>

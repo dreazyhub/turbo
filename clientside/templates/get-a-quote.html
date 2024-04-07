@@ -10,7 +10,7 @@
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
               <h2>Get a Quote</h2>
-              <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+              <p>Our dedicated team of logistics experts is ready to assist you in finding the best solutions for your shipping and transportation needs. We understand that each customer is unique, and we pride ourselves on delivering personalized support tailored to your specific requirements.</p>
             </div>
           </div>
         </div>
@@ -18,7 +18,7 @@
       <nav>
         <div class="container">
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="{% url 'ClientSide:homepage' %}">Home</a></li>
             <li>Get a Quote</li>
           </ol>
         </div>
@@ -34,9 +34,10 @@
           <div class="col-lg-5 quote-bg" style="background-image: url(assets/img/quote-bg.jpg);"></div>
 
           <div class="col-lg-7">
-            <form action="forms/quote.php" method="post" class="php-email-form">
+            <form action="" method="post" class="">
+              {% csrf_token %}
               <h3>Get a quote</h3>
-              <p>Vel nobis odio laboriosam et hic voluptatem. Inventore vitae totam. Rerum repellendus enim linead sero park flows.</p>
+              <p>Send Us A Message</p>
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -76,9 +77,9 @@
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
+                  <!-- <div class="loading">Loading</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">Your quote request has been sent successfully. Thank you!</div>
+                  <div class="sent-message">Your quote request has been sent successfully. Thank you!</div> -->
 
                   <button type="submit">Get a quote</button>
                 </div>

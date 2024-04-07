@@ -15,13 +15,10 @@ urlpatterns = [
     path('details/<str:pk>/', views.details, name = 'details'),
     path('delete/<str:pk>/', views.deleteorder, name='delete-order'),
    
-    
-     path('alllmessages/',views.Allmessages, name='all-messages'),
-     path('message-details/<str:pk>/', views.messageDetails, name = 'message-details'),
-
-
-
-  
+    path('alllmessages/',views.Allmessages, name='all-messages'),
+    path('message-details/<str:pk>/', views.messageDetails, name = 'message-details'),
+    path('delete/<str:pk>/', views.deletemessage, name='delete-message'),
+    path('test/', views.status, name ='email')
     
 ]
 urlpatterns += staticfiles_urlpatterns()
