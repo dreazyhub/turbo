@@ -1,6 +1,7 @@
-{% extends 'index1.html'%}
+{% extends 'basic.html'%}
 {% load static %}
 {% block content %}
+{% block about_active %} active {% endblock %}
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
@@ -17,7 +18,7 @@
         <nav>
           <div class="container">
             <ol>
-              <li><a href="{% url 'ClientSide:homepage' %}">Home</a></li>
+              <li><a href="{% url 'clientside:homepage' %}">Home</a></li>
               <li>About</li>
             </ol>
           </div>
@@ -36,7 +37,7 @@
             <div class="col-lg-6 content order-last  order-lg-first">
               <h3>About Us</h3>
               <p>
-                Box N Ship.World-Logistics is a leading logistics company dedicated to providing efficient and reliable shipping and transportation solutions. With years of industry experience, we have built a reputation for excellence, customer satisfaction, and a commitment to meeting the diverse needs of our clients.
+               Turbo Transit Logistics is a leading logistics company dedicated to providing efficient and reliable shipping and transportation solutions. With years of industry experience, we have built a reputation for excellence, customer satisfaction, and a commitment to meeting the diverse needs of our clients.
 
               </p>
               <ul>
@@ -82,7 +83,7 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
               <div class="card">
               
-                <h3><a href="{% url 'ClientSide:services' %}" class="stretched-link">Enabling Growth and Prosperity</a></h3>
+                <h3><a href="{% url 'clientside:services' %}" class="stretched-link">Enabling Growth and Prosperity</a></h3>
                 <p> We understand the vital role that logistics plays in the success of businesses. Our vision is to empower businesses by providing efficient and reliable delivery solutions. By seamlessly transporting products, streamlining supply chains, and offering value-added services, we aim to contribute to the growth and prosperity of our clients.
                 </p>
               </div>
@@ -90,7 +91,7 @@
   
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
               <div class="card">
-                <h3><a href="{% url 'ClientSide:services' %}" class="stretched-link">Connecting People and Communities</a></h3>
+                <h3><a href="{% url 'clientside:services' %}" class="stretched-link">Connecting People and Communities</a></h3>
                 <p> We believe that every package carries more than just physical goods—it carries emotions, aspirations, and connections. Our vision is to bridge distances, connecting people and communities across the globe. Whether it's reuniting loved ones, enabling businesses to thrive, or supporting humanitarian efforts, we aim to be the catalyst that brings people closer together.
                 </p>
               </div>
@@ -99,7 +100,7 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
               <div class="card">
                 
-                <h3><a href="{% url 'ClientSide:services' %}" class="stretched-link">Embracing Innovation and Technology</a></h3>
+                <h3><a href="{% url 'clientside:services' %}" class="stretched-link">Embracing Innovation and Technology</a></h3>
                 <p>We believe in the power of innovation and technology to transform the logistics industry. Our vision is to stay at the forefront of technological advancements, leveraging cutting-edge solutions to enhance the efficiency, transparency, and sustainability of our operations. By embracing innovation, we aim to continuously improve our services and exceed customer expectations.
                 </p>
               </div>
@@ -107,7 +108,7 @@
   
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
               <div class="card">
-                <h3><a href="{% url 'ClientSide:services' %}" class="stretched-link">Championing Sustainability and Responsibility</a></h3>
+                <h3><a href="{% url 'clientside:services' %}" class="stretched-link">Championing Sustainability and Responsibility</a></h3>
                 <p>We recognize our responsibility to protect the planet and future generations. Our vision is to lead the industry in sustainable practices, reducing our environmental impact and promoting responsible logistics. Through eco-friendly initiatives, carbon footprint reduction, and partnerships with like-minded organizations, we aim to create a greener and more sustainable future.
                 </p>
               </div>
@@ -116,7 +117,7 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
               <div class="card">
                 
-                <h3><a href="{% url 'ClientSide:services' %}" class="stretched-link">Delivering Excellence and Delight</a></h3>
+                <h3><a href="{% url 'clientside:services' %}" class="stretched-link">Delivering Excellence and Delight</a></h3>
                 <p>Our vision is to set the standard of excellence in the courier industry. We strive to deliver beyond expectations, providing exceptional customer service, reliable deliveries, and innovative solutions. Our goal is to delight our customers at every touchpoint, earning their trust and loyalty as their preferred courier partner.
                 </p>
               </div>
@@ -125,7 +126,7 @@
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
               <div class="card">
                 
-                <h3><a href="{% url 'ClientSide:services' %}" class="stretched-link">Empowering our Team</a></h3>
+                <h3><a href="{% url 'clientside:services' %}" class="stretched-link">Empowering our Team</a></h3>
                 <p>We believe that our success lies in the hands of our dedicated team. Our vision is to foster a supportive and inclusive work environment that values collaboration, personal growth, and professional development. By empowering our team members, we aim to cultivate a passionate and motivated workforce dedicated to delivering excellence.
                 </p>
               </div>

@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Homepage</title>
+  <title>Turbo Transit Logistics</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -33,14 +33,6 @@
 
   {% endblock %}
 
-
-  <!-- =======================================================
-  * Template Name: Logis
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/logis-bootstrap-logistics-website-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>
@@ -49,30 +41,29 @@
   <header id="header" class="header d-flex align-items-center fixed-top bg-dark" opacity="50">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="{% url 'ClientSide:homepage' %}" class="logo d-flex align-items-center">
+      <a href="{% url 'clientsie:homepage' %}" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="{% static 'assets/img/box-n-ship.png' %}" alt="">
-        <h1>Box N Ship.World-Logistics</h1>
+        <h1>Turbo Transit Logistics</h1>
       </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="{% url 'ClientSide:homepage' %}" class="active">Home</a></li>
-          <li><a href="{% url 'ClientSide:about' %}">About</a></li>
-          <li><a href="{% url 'ClientSide:services' %}">Services</a></li>
-          <li><a href="{% url 'ClientSide:track' %}">Track</a></li> 
-          <li><a href="{% url 'ClientSide:contact' %}">Contact</a></li>
-          <li><a class="get-a-quote" href="{% url 'ClientSide:get-a-quote' %}">Get a Quote</a></li>
+          <li><a href="{% url 'clientsie:homepage' %}" class="active">Home</a></li>
+          <li><a href="{% url 'clientsie:about' %}">About</a></li>
+          <li><a href="{% url 'clientsie:services' %}">Services</a></li>
+          <li><a href="{% url 'clientsie:track' %}">Track</a></li> 
+          <li><a href="{% url 'clientsie:contact' %}">Contact</a></li>
+          <li><a class="get-a-quote" href="{% url 'clientsie:get-a-quote' %}">Get a Quote</a></li>
         </ul>
       </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
-
-
+ 
   <main id="main">
     {% block content %}
 
@@ -86,9 +77,9 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="" class="logo d-flex align-items-center">
-            <span>Box N Ship.World-Logistics</span>
+            <span>Turbo Transit Logistics</span>
           </a>
-          <p>Experience the speed, efficiency, and reliability of Box N Ship.World-Logistics. Contact us today and let us take care of your logistics needs, so you can stay ahead in an ever-evolving business landscape.</p>
+          <p>Experience the speed, efficiency, and reliability of Turbo Transit Logistics. Contact us today and let us take care of your logistics needs, so you can stay ahead in an ever-evolving business landscape.</p>
           <div class="social-links d-flex mt-4">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -100,9 +91,9 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="{% url 'ClientSide:homepage' %}">Home</a></li>
-            <li><a href="{% url 'ClientSide:about' %}">About us</a></li>
-            <li><a href="{% url 'ClientSide:services' %}">Services</a></li>
+            <li><a href="{% url 'clientsie:homepage' %}">Home</a></li>
+            <li><a href="{% url 'clientsie:about' %}">About us</a></li>
+            <li><a href="{% url 'clientsie:services' %}">Services</a></li>
             <li><a href="#">Terms of service</a></li>
             <li><a href="#">Privacy policy</a></li>
           </ul>
@@ -111,11 +102,11 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><a href="{% url 'ClientSide:services' %}">Storage</a></li>
-            <li><a href="{% url 'ClientSide:services' %}">Logistics</a></li>
-            <li><a href="{% url 'ClientSide:services' %}">Warehousing</a></li>
-            <li><a href="{% url 'ClientSide:services' %}">Trucking</a></li>
-            <li><a href="{% url 'ClientSide:services' %}">Packaging</a></li>
+            <li><a href="{% url 'clientsie:services' %}">Storage</a></li>
+            <li><a href="{% url 'clientsie:services' %}">Logistics</a></li>
+            <li><a href="{% url 'clientsie:services' %}">Warehousing</a></li>
+            <li><a href="{% url 'clientsie:services' %}">Trucking</a></li>
+            <li><a href="{% url 'clientsie:services' %}">Packaging</a></li>
           </ul>
         </div> 
 
@@ -126,7 +117,7 @@
             Odessa, TX 79763<br>
             United States <br><br>
             <strong>Phone:</strong> +1 (713) 3225070<br>
-            <strong>Email:</strong> support@boxnshipworldlogistics.com<br>
+            <strong>Email:</strong>turbotransitlogistics@gmail.com<br>
           </p>
 
         </div>
@@ -136,7 +127,7 @@
 
     <div class="container mt-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>Box N Ship.World-Logistics</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Turbo Transit Logistics</span></strong>. All Rights Reserved
       </div>
     </div>
 

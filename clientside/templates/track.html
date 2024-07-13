@@ -1,8 +1,9 @@
-{% extends 'index1.html' %}
+{% extends 'basic.html' %}
 {% load static %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'assets/css/track.css' %}">
 <link rel="stylesheet" href="{% static 'assets/css/progress.css' %}">
+{% block track_and_trace_active %} active {% endblock %}
 
 {% endblock %}
 {% block content %}
@@ -21,14 +22,14 @@
     <nav>
       <div class="container">
         <ol>
-          <li><a href="{% url 'ClientSide:homepage'%}">Home</a></li>
+          <li><a href="{% url 'clientside:homepage'%}">Home</a></li>
           <li>Track</li>
         </ol>
       </div>
     </nav>
   </div><!-- End Breadcrumbs -->
 
-<main>
+  <main>
     
     <section class="inputClass ">
         
@@ -41,7 +42,7 @@
                     {% endfor %}
                 </ul>
                {% endif %}
-                <form method="POST" action="" class="desktop" id="trackform">
+                <!-- <form method="POST" action="" class="desktop" id="trackform">
                     {% csrf_token %}
                     <div class="row  container-fluid mx-auto ">
                         <div class="col-9 input">
@@ -52,7 +53,7 @@
                             <button type="submit" class="btn btn-secondary mb-3" id="#trackbutton">Track order</button>
                         </div>
                     </div>
-                </form>
+                </form> -->
                 <!-- mobile view -->
                 <form method="POST" action="" class="mobile" id="trackform">
                     {% csrf_token %}
@@ -80,39 +81,54 @@
                     <p>Thank you for choosing our services. We are dedicated to making sure your shipments reach their destination efficiently and safely. </p>
                 </div>
             </div>
-            <div class="container-fluid reciever">
-                <h5 class="text-center">Order information</h5>
-                <p>Arrival Date: <span>{{model_instance.arrival_time}}</span></p>
-                <table class="table table-bordered">
+            <div class="container-fluid reciever" style="margin-top: 2rem;">
+                <h4 class="text-strong">Sender information</h4>
+                <hr>
+                <table class="table table">
                     <tbody>
                         <tr>
-                            <td class="text-strong">Order ID</td>
-                            <td>{{model_instance.tracking_number}}</td>
-                          </tr>
-                      <tr>
-                        <td class="text-strong">Name</td>
-                        <td>{{model_instance.reciever_name}}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-strong">Address</td>
-                        <td>{{model_instance.reciever_address}}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-strong">Email</td>
-                        <td>{{model_instance.reciever_email}}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-strong">Package description</td>
-                        <td>{{model_instance.description}}</td>
-                      </tr>
-                      <tr>
-                        <td class="text-strong">weight</td>
-                        <td>{{model_instance.weight}}</td>
-                      </tr>
+                            <td class="text-strong"> Name</td>
+                            <td>{{model_instance.sender_name}}</td>
+                        </tr>
+                         <tr>
+                            <td class="text-strong"> Email</td>
+                            <td>{{model_instance.sender_email}}</td>
+                        </tr>
+                         <tr>
+                            <td class="text-strong"> Address </td>
+                            <td>{{model_instance.sender_address}}</td>
+                        </tr>
                     </tbody>
-                  </table>
+                </table>
             </div>
-            <div class="container tracking-list">
+            <div class="container-fluid reciever"  style="margin-top: 3rem;">
+                <h4 class="text-strong">Reciever information</h4>
+                <hr>
+                <table class="table table-bodered">
+                    <tbody>
+                        <tr>
+                            <td class="text-strong"> Name</td>
+                            <td>{{model_instance.reciever_name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Email</td>
+                            <td>{{model_instance.reciever_email}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Phone</td>
+                            <td>{{model_instance.Phone_number}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Address </td>
+                            <td>{{model_instance.reciever_address}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+           
+            <div class="container tracking-list" style="margin-top: 3rem;">
+                <h4 class="text-strong">Shipment status</h4>
+                <hr>
                 <ul id="progressbar" class="text-center d-flex">
                     <li class="step0 {% if model_instance.status == 1 or model_instance.status == 2 or model_instance.status == 3 or model_instance.status == 4 %} active {% endif %}">
                         <div class="row icon-content">
@@ -157,6 +173,75 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+
+            <div class="container-fluid reciever" style="margin-top: 3rem; ">
+                <h4 class="text-strong">Shipment information</h4>
+                <hr>
+                <table class="table table-bodered">
+                    <tbody>
+                        <tr>
+                            <td class="text-strong"> Origin</td>
+                            <td>{{model_instance.origin}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Destination</td>
+                            <td>{{model_instance.destination}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Status</td>
+                            <td>{{model_instance.status}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Package </td>
+                            <td>{{model_instance.package}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Carrier</td>
+                            <td>{{model_instance.carrier}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Type of Shipment </td>
+                            <td>{{model_instance.type_of_shipment}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Weight </td>
+                            <td>{{model_instance.weight}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Shipment Mode </td>
+                            <td>{{model_instance.type_of_shipment}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Carrier Reference </td>
+                            <td>{{model_instance.reference_number}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Description </td>
+                            <td>{{model_instance.description}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Expected Departure date</td>
+                            <td>{{model_instance.departure_date}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Expected Depature Time</td>
+                            <td>{{model_instance.departure_time}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Expected Delivery Date </td>
+                            <td>{{model_instance.arrival_date}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Expected Delivery Time </td>
+                            <td>{{model_instance.arrival_time}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong">Payment Mode</td>
+                            <td>{{model_instance.payment_method}}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
        
