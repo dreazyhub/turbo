@@ -10,7 +10,7 @@ urlpatterns = [
     path('services/', views.Services, name = 'services'),
     path('track/', views.Track, name = 'track'),
     path('contact/', views.Contact, name = 'contact'),  
-    path('get-a-quote', views.Quote, name = 'get-a-quote'),  
+    path('get-a-quote/', views.Quote, name = 'get-a-quote'),  
 
     
 ]
