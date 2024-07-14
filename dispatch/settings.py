@@ -23,13 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("SECRET_KEY")
-SECRET_KEY = '816ce6fb82a2d714851f0dd311ede7a1'
+# SECRET_KEY = '816ce6fb82a2d714851f0dd311ede7a1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "True"
-DEBUG = False
+# DEBUG = False
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", " ").split(" ")
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+# ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -87,20 +87,9 @@ DATABASES = {
 }
 
 # settings.py
+database_url = os.environ.get('DATABASE_URL')
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'rapid_dispatch',
-#         'USER': 'rapid_dispatch_user',
-#         'PASSWORD': 'MecaHz7N818QHtSbPMSzUSznvWH5nGH8',
-#         'HOST': 'dpg-cn9b8qq1hbls73df8on0-a.oregon-postgres.render.com',
-#         'PORT': '',
-#     }
-# }
-
-# DATABASE_URL = os.environ.get("DATABASE_URL")
-# DATABASES['default'] = dj_database_url.config(default = DATABASE_URL)
+DATABASES['default'] = dj_database_url.parse(database_url)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -152,4 +141,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #LOGOUT_URL = '/AdminSide/login/'
 LOGIN_URL = '/adminside/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
+
+
 
