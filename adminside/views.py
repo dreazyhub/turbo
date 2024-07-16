@@ -6,6 +6,7 @@ from .forms import Orderform, Userform
 from . models import Order
 from clientside.models import Quote
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
@@ -30,14 +31,14 @@ def loginUser(request):
         try:
             user = User.objects.get(username=username)
         except:
-            print('username does not exist')
+            messages.error(request, 'username does not exist')
         user = authenticate(request, username=username, password=password)
         
         if user is not None:
             login(request, user)
             return redirect('AdminSide:dashboard')   
         else:
-            print('Username or password is not correct')         
+            messages.error(request, 'Username or password is not correct.')
     return render(request, 'login.html')
 
 

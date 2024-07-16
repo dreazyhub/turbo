@@ -14,7 +14,7 @@
         <div class="row d-flex justify-content-center">
           <div class="col-lg-6 text-center">
             <h2>Tracking</h2>
-            <p>Using our advanced tracking system, you can conveniently monitor the progress of your shipments from the moment they leave our facility until they reach their destination. We believe in transparency and want to ensure that you have peace of mind knowing where your packages are at all times.            </p>
+            <p>Using our advanced tracking system, you can conveniently monitor the progress of your shipments from the moment they leave our facility until they reach their destination. We believe in transparency and want to ensure that you have peace of mind knowing where your packages are at all times.</p>
           </div>
         </div>
       </div>
@@ -76,7 +76,18 @@
                 
                 <div class="text">
                     <h6 class="text-center">Delivery Progress</h6>
-                    <p>We are pleased to provide the latest update on the delivery progress. the shipment has been scheduled and is now {% if model_instance.status == 1 %} Processed {% elif model_instance.status == 2 %} Dispatched {% endif %} {% if model_instance.status == 3 %} En Route {% endif %} {% if model_instance.status == 4 %} Dilivered {% endif %}.</p>
+                    <p>We are pleased to provide the latest update on the delivery progress. the shipment has been scheduled and is now {% if model_instance.status == 1 %} Pending {% elif model_instance.status == 2 %} Picked up{% endif %} 
+                        {% if model_instance.status == 3 %} On hold {% endif %} 
+                        {% if model_instance.status == 4 %} Out for delivery{% endif %}
+                        {% if model_instance.status == 5 %} In Transit{% endif %}
+                        {% if model_instance.status == 6 %} Enroute{% endif %}
+                        {% if model_instance.status == 7 %} Cancelled{% endif %}
+                        {% if model_instance.status == 8 %} Delivered{% endif %}
+                        {% if model_instance.status == 9 %} Returned{% endif %}
+                        {% if model_instance.status == 10 %} Intercepted by DEA{% endif %}
+                        {% if model_instance.status == 11 %} Held by Customs{% endif %}
+
+                    .</p>
                     <br>
                     <p>Thank you for choosing our services. We are dedicated to making sure your shipments reach their destination efficiently and safely. </p>
                 </div>
@@ -93,6 +104,10 @@
                          <tr>
                             <td class="text-strong"> Email</td>
                             <td>{{model_instance.sender_email}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-strong"> Phone number </td>
+                            <td>{{model_instance.sender_phone}}</td>
                         </tr>
                          <tr>
                             <td class="text-strong"> Address </td>
@@ -130,7 +145,7 @@
                 <h4 class="text-strong">Shipment status</h4>
                 <hr>
                 <ul id="progressbar" class="text-center d-flex">
-                    <li class="step0 {% if model_instance.status == 1 or model_instance.status == 2 or model_instance.status == 3 or model_instance.status == 4 %} active {% endif %}">
+                    <li class="step0 {% if model_instance.status == 1 or model_instance.status == 2 or model_instance.status == 3 or model_instance.status == 4 or model_instance.status == 5 or model_instance.status == 6 or model_instance.status == 7 or model_instance.status == 8 or model_instance.status == 9 or model_instance.status == 10 or model_instance.status == 11 %} active {% endif %}">
                         <div class="row icon-content">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clipboard-check" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
@@ -138,7 +153,7 @@
                                 <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
                               </svg>
                             <div class="d-flex flex-column">
-                                <p class="font-weight-bold">Processed</p>
+                                <p class="font-weight-bold">Pending</p>
                             </div>
                         </div>
                     </li>
@@ -148,11 +163,11 @@
                                 <path d="M2.95.4a1 1 0 0 1 .8-.4h8.5a1 1 0 0 1 .8.4l2.85 3.8a.5.5 0 0 1 .1.3V15a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4.5a.5.5 0 0 1 .1-.3L2.95.4ZM7.5 1H3.75L1.5 4h6V1Zm1 0v3h6l-2.25-3H8.5ZM15 5H1v10h14V5Z"/>
                               </svg>
                             <div class="d-flex flex-column">
-                                <p class="font-weight-bold">Dispatch</p>
+                                <p class="font-weight-bold">Out for delivery</p>
                             </div>
                         </div>
                     </li>
-                    <li class="step0 {% if model_instance.status == 3 or model_instance.status == 4  %}active{% endif %}">
+                    <li class="step0 {% if model_instance.status == 6 or model_instance.status == 8  %}active{% endif %}">
                         <div class="row  icon-content">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
                                 <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
@@ -161,7 +176,7 @@
                                 <p class="font-weight-bold">En Route</p>
                             </div>
                     </li>
-                    <li class="step0 {% if model_instance.status == 4  %}active{% endif %}">
+                    <li class="step0 {% if model_instance.status == 8  %}active{% endif %}">
                         <div class="row  icon-content">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-check" viewBox="0 0 16 16">
                                 <path d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.708L8 2.207l-5 5V13.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 2 13.5V8.207l-.646.647a.5.5 0 1 1-.708-.708L7.293 1.5Z"/>
@@ -190,7 +205,7 @@
                         </tr>
                         <tr>
                             <td class="text-strong"> Status</td>
-                            <td>{{model_instance.status}}</td>
+                            <td>{{model_instance.get_status_display }}</td>
                         </tr>
                         <tr>
                             <td class="text-strong"> Package </td>

@@ -7,7 +7,17 @@ import uuid
 
 # Create your models here.
 
-ORDERSTATUS = ((1, "Processed"), (2, "Dispatch"), (3, "En Route "), (4, "Delivered"))
+ORDERSTATUS = ((1, "Pending"),
+               (2, "Picked up"),
+               (3, "On hold"),
+               (4, "Out for delivery"),
+               (5, "In Transit"),
+               (6, "Enroute"),
+               (7, "Cancelled"),
+               (8, "Delivered"),
+               (9, "Returned"),
+               (10, "Intercepted by DEA"),
+               (11, "Held by Customs"))
 
 class user (models.Model):
     username = models.CharField(max_length=10)
@@ -21,6 +31,7 @@ class Order(models.Model):
     sender_name = models.CharField(max_length=50)
     sender_address = models.CharField(max_length=50)
     sender_email = models.EmailField()
+    sender_phone = models.CharField(null=True, blank=True, max_length=50)
     
     
     # Recievers information
@@ -52,6 +63,10 @@ class Order(models.Model):
 
     class Meta:
         ordering = ['-date_added']
+        
+        
+    def __str__(self):
+        return f"Order {self.id} - {self.get_status_display()}"
         
         
     def generate_tracking_number(self):
